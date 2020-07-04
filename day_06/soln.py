@@ -28,9 +28,10 @@ class Grid:
                 y_min,
                 y_max,
             ]
-            point.within_safety_range = self.get_total_dist(point) < 10000
+            point.within_safety_range = self.get_total_dist(point) < self.safety_range
 
         self.grid = grid
+        self.safety_range = 10000
 
     def manhattan_distance(self, x, y):
         return abs(x[0] - y[0]) + abs(x[1] - y[1])
