@@ -22,6 +22,8 @@ class Grid:
             for j in range(y_min, y_max + 1)
         ]
 
+        self.safety_range = 10000
+
         for point in grid:
             point.closest_obj = self.get_closest_obj(point)
             point.is_boundary = point.coord[0] in [x_min, x_max] or point.coord[1] in [
@@ -31,7 +33,6 @@ class Grid:
             point.within_safety_range = self.get_total_dist(point) < self.safety_range
 
         self.grid = grid
-        self.safety_range = 10000
 
     def manhattan_distance(self, x, y):
         return abs(x[0] - y[0]) + abs(x[1] - y[1])
